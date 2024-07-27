@@ -35,7 +35,6 @@ jobs:
           KEY: ${{ secrets.PASSWORD }}
       # RUN already local triggers
       - run: |
-
-      cd  /root/test/project/test_next/test-next
-      git pull origin main
-      docker compose up -d
+              cd  /root/test/project/test_next/test-next
+              git pull origin main
+              docker compose up -d
