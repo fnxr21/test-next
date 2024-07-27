@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: docker-next
+    container_name: docker-next-test
     ports:
       - '3022:3000'
     volumes:
