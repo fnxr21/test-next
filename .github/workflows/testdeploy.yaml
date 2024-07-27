@@ -1,0 +1,41 @@
+name: Continuous Deployment Kelas Terbuka Comunity
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  building:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Authentication
+        uses: actions/checkout@v3
+        env:
+          HOST: ${{ secrets.IP }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.PASSWORD }}
+      # RUN already local triggers
+  build-kelas-terbuka:
+    runs-on: self-hosted
+    needs: building
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Authentication
+        uses: actions/checkout@v3
+        env:
+          HOST: ${{ secrets.IP }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.PASSWORD }}
+      # RUN already local triggers
+      - run: |
+
+      cd  /root/test/project/test_next/test-next
+      git pull origin main
+      docker compose up -d
